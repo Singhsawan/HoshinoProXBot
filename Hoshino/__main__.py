@@ -1,6 +1,7 @@
 import importlib
 import re
 import time
+import random
 from platform import python_version as y
 from sys import argv
 
@@ -72,14 +73,25 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-*ʜᴇʏ* {}, 🥀
+*ʜᴇʏ* {}, 
 
-*๏ ᴛʜɪs ɪs* {} !
+*๏ ᴛʜɪs ɪs* {} ![ㅤ](https://telegra.ph/file/bbdaf08bbefc3df7f81c9.mp4)
 ➻ ᴛʜᴇ ᴍᴏsᴛ ᴩᴏᴡᴇʀғᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴩ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ᴡɪᴛʜ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ᴀɴᴅ ᴜsᴇғᴜʟ ғᴇᴀᴛᴜʀᴇs.
 
 ──────────────────
 *๏ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴍᴏᴅᴜʟᴇs ᴀɴᴅ ᴄᴏᴍᴍᴀɴᴅs.*
 """
+
+
+START_STICKER = (
+    "CAACAgIAAxkBAAM8ZJM-4YzXU-_yTyk2m73D9vohpXYAAuUrAAJjCvlJzcmQ4GLMbX4vBA",
+    "CAACAgIAAxkBAAM9ZJM-4-XUHMBtaNzo49vqVDYx4V0AAkYuAAPxyUkWjk--NBBrDi8E",
+    "CAACAgIAAxkBAAM-ZJM-5RhfcXlO-TH-1B6dQclaJKEAAkkvAALnYMBJ2MsGH8xIy0svBA",
+    "CAACAgIAAxkBAAM_ZJM-6PGkJN2ejoYw9b12QSltxSkAAl8tAAI4V_lJfGkzwLW4ubkvBA",
+    "CAACAgIAAxkBAANAZJM-6hZygx1uKzD7B-g9ePQLZIsAAmIqAAISQchJfJYxIEYPWuQvBA",
+    "CAACAgIAAxkBAANBZJM-7JjjLhRCxqSW_wGW0iXywisAAsYoAAIFjPhJtnU4kXcp5MsvBA",
+    "CAACAgIAAxkBAANCZJM-7lyus69tnVznMHzN8yYa17YAAistAAIW1thJ66oLQhUnETEvBA",
+)
 
 buttons = [
     [
@@ -89,16 +101,16 @@ buttons = [
         ),
     ],
     [
-        InlineKeyboardButton(text="ʜᴇʟᴩ & ᴄᴏᴍᴍᴀɴᴅs", callback_data="help_back"),
+        InlineKeyboardButton(text="нєℓρ & cσммαη∂ѕ", callback_data="help_back"),
     ],
     [
-        InlineKeyboardButton(text="❄ ᴀʙᴏᴜᴛ ❄", callback_data="fallen_"),
-        InlineKeyboardButton(text="✨ sᴜᴩᴩᴏʀᴛ ✨", url=f"https://t.me/{SUPPORT_CHAT}"),
+        InlineKeyboardButton(text=" αвσυт ", callback_data="fallen_"),
+        InlineKeyboardButton(text=" ѕυρρσят ", url=f"https://t.me/{SUPPORT_CHAT}"),
     ],
-    [
-        InlineKeyboardButton(text="🥀 ᴅᴇᴠᴇʟᴏᴩᴇʀ 🥀", url=f"tg://user?id={OWNER_ID}"),
-        InlineKeyboardButton(text="☁️ sᴏᴜʀᴄᴇ ☁️", callback_data="source_"),
-    ],
+    # [
+    #     InlineKeyboardButton(text="🥀 ∂єνєℓσρєя 🥀", url=f"tg://user?id={OWNER_ID}"),
+    #     InlineKeyboardButton(text="☁️ ѕσυяcє ☁️", callback_data="source_"),
+    # ],
 ]
 
 HELP_STRINGS = f"""
@@ -204,7 +216,8 @@ def start(update: Update, context: CallbackContext):
         else:
             first_name = update.effective_user.first_name
             update.effective_message.reply_sticker(
-                "CAACAgUAAxkBAAJYsmLWRvm70cE-mmxSNCovEf4v1ueJAAIcCAACbMK4VuL4EmZEkq8WKQQ"
+                random.choice(START_STICKER),
+                timeout=60,
             )
             update.effective_message.reply_text(
                 PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
@@ -367,18 +380,18 @@ def Fallen_about_callback(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(
-                            text="sᴜᴩᴩᴏʀᴛ", callback_data="fallen_support"
+                            text="ѕυρρσят", callback_data="fallen_support"
                         ),
                         InlineKeyboardButton(
-                            text="ᴄᴏᴍᴍᴀɴᴅs", callback_data="help_back"
+                            text="cσммαη∂ѕ", callback_data="help_back"
                         ),
                     ],
                     [
                         InlineKeyboardButton(
-                            text="ᴅᴇᴠᴇʟᴏᴩᴇʀ", url=f"tg://user?id={OWNER_ID}"
+                            text="∂єνєℓσρєя", url=f"tg://user?id={OWNER_ID}"
                         ),
                         InlineKeyboardButton(
-                            text="sᴏᴜʀᴄᴇ",
+                            text="ѕσυяcє",
                             callback_data="source_",
                         ),
                     ],
@@ -413,7 +426,7 @@ def Fallen_about_callback(update: Update, context: CallbackContext):
                         ),
                     ],
                     [
-                        InlineKeyboardButton(text="◁", callback_data="fallen_"),
+                        InlineKeyboardButton(text="《 ", callback_data="fallen_"),
                     ],
                 ]
             ),
@@ -526,7 +539,7 @@ def get_help(update: Update, context: CallbackContext):
             chat.id,
             text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="◁", callback_data="help_back")]]
+                [[InlineKeyboardButton(text="《", callback_data="help_back")]]
             ),
         )
 
@@ -598,7 +611,7 @@ def settings_button(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="◁",
+                                text="《",
                                 callback_data="stngs_back({})".format(chat_id),
                             )
                         ]
