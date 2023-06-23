@@ -1,20 +1,15 @@
-#API CREDITS - @Yash_Sharama_1807 and @KIRITO1240
-#PROVIDED BY - @NovaXMod
-#MADE BY - @KIRITO_1240
-
-#IMPORTS
 import requests
 from pyrogram import filters
 from pyrogram.types import Message,InlineKeyboardButton,InlineKeyboardMarkup
 from pyrogram.enums import *
-#NAME -> YOUR BOTS FILE NAME 
+
 from Hoshino import pbot
 
 
 @pbot.on_message(filters.command("cosplay"))
 async def cosplay(_,msg):
     img = requests.get("https://waifu-api.vercel.app").json()
-    await msg.reply_photo(img, caption=f"Cosplay By @{pbot.me.username}\nCredits: @NovaXMod")
+    await msg.reply_photo(img, caption=f"Cosplay By @{pbot.me.username}")
 
 @pbot.on_message(filters.command("ncosplay"))
 async def ncosplay(_,msg):
@@ -28,6 +23,6 @@ async def ncosplay(_,msg):
     else:
        ncosplay = requests.get("https://waifu-api.vercel.app/items/1").json()
 
-       await msg.reply_photo(ncosplay, caption=f"Cosplay By \nCredits: @NovaXMod")
+       await msg.reply_photo(ncosplay, caption=f"Cosplay By @{pbot.me.username}")
 
 
