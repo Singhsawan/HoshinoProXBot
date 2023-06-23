@@ -83,7 +83,6 @@ def fallenadd(update: Update, context: CallbackContext) -> str:
 
     return ""
 
-
 @user_admin
 @gloggable
 def fallen(update: Update, context: CallbackContext):
