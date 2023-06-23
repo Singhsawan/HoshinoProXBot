@@ -4,7 +4,16 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from telegram import __version__ as telever
 from telethon import __version__ as tlhver
 
-from Hoshino import BOT_NAME, BOT_USERNAME, OWNER_ID, START_IMG, SUPPORT_CHAT, pbot
+from Hoshino import BOT_NAME, BOT_USERNAME, OWNER_ID, SUPPORT_CHAT, pbot
+
+import random
+
+START_IMG = (
+    "https://telegra.ph/file/b338214b85fee0c81aec5.jpg",
+    "https://telegra.ph/file/8e6f8bad1d448e3398468.jpg",
+    "https://telegra.ph/file/28296667cb727005c5f9e.jpg",
+    "https://telegra.ph/file/ae35d8a131d0e175c0e49.jpg",
+)
 
 
 @pbot.on_message(filters.command("alive"))
@@ -21,7 +30,7 @@ async def awake(_, message: Message):
         ]
     ]
     await message.reply_photo(
-        photo=START_IMG,
+        photo=random.choice(START_IMG),
         caption=TEXT,
         reply_markup=InlineKeyboardMarkup(BUTTON),
     )
