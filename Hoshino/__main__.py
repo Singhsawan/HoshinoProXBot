@@ -82,6 +82,18 @@ PM_START_TEXT = """
 *๏ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴍᴏᴅᴜʟᴇs ᴀɴᴅ ᴄᴏᴍᴍᴀɴᴅs.*
 """
 
+
+START_STIKERS = (
+    "CAACAgIAAxkBAAM8ZJM-4YzXU-_yTyk2m73D9vohpXYAAuUrAAJjCvlJzcmQ4GLMbX4vBA",
+    "CAACAgIAAxkBAAM-ZJM-5RhfcXlO-TH-1B6dQclaJKEAAkkvAALnYMBJ2MsGH8xIy0svBA",
+    "CAACAgIAAxkBAAM_ZJM-6PGkJN2ejoYw9b12QSltxSkAAl8tAAI4V_lJfGkzwLW4ubkvBA",
+    "CAACAgIAAxkBAANAZJM-6hZygx1uKzD7B-g9ePQLZIsAAmIqAAISQchJfJYxIEYPWuQvBA",
+    "CAACAgIAAxkBAANAZJM-6hZygx1uKzD7B-g9ePQLZIsAAmIqAAISQchJfJYxIEYPWuQvBA",
+    "CAACAgIAAxkBAANCZJM-7lyus69tnVznMHzN8yYa17YAAistAAIW1thJ66oLQhUnETEvBA"
+)
+START_STIKER = random.choice(START_STIKERS)
+
+
 buttons = [
     [
         InlineKeyboardButton(
@@ -109,6 +121,7 @@ HELP_STRINGS = f"""
 ➲ /help  : ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅꜱ ꜱᴇᴄᴛɪᴏɴ.
   ‣ ɪɴ ᴘᴍ : ᴡɪʟʟ ꜱᴇɴᴅ ʏᴏᴜ ʜᴇʟᴘ ꜰᴏʀ ᴀʟʟ ꜱᴜᴘᴘᴏʀᴛᴇᴅ ᴍᴏᴅᴜʟᴇꜱ.
   ‣ ɪɴ ɢʀᴏᴜᴘ : ᴡɪʟʟ ʀᴇᴅɪʀᴇᴄᴛ ʏᴏᴜ ᴛᴏ ᴘᴍ, ᴡɪᴛʜ ᴀʟʟ ᴛʜᴀᴛ ʜᴇʟᴘ ᴍᴏᴅᴜʟᴇꜱ."""
+
 
 
 
