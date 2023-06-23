@@ -248,7 +248,7 @@ def anime(update: Update, context: CallbackContext):
                     InlineKeyboardButton("ᴛʀᴀɪʟᴇʀ 🎬", url=trailer),
                 ],
                 [
-                    InlineKeyboardButton("🍿 ᴅᴏᴡɴʟᴏᴀᴅ 🍿", url=f"https://t.me/Animez_96"),
+                    InlineKeyboardButton("🍿 ᴅᴏᴡɴʟᴏᴀᴅ 🍿", url=f"https://t.me/AnimeXInsider"),
                 ],
             ]
         else:
