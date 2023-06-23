@@ -91,7 +91,6 @@ START_STIKERS = (
     "CAACAgIAAxkBAANAZJM-6hZygx1uKzD7B-g9ePQLZIsAAmIqAAISQchJfJYxIEYPWuQvBA",
     "CAACAgIAAxkBAANCZJM-7lyus69tnVznMHzN8yYa17YAAistAAIW1thJ66oLQhUnETEvBA"
 )
-START_STIKER = random.choice(START_STIKERS)
 
 
 buttons = [
@@ -220,8 +219,10 @@ def start(update: Update, context: CallbackContext):
         else:
             first_name = update.effective_user.first_name
             update.effective_message.reply_sticker(
-                START_STIKER
+                random.choice(START_STIKERS),
+                timeout=60,
             )
+
             update.effective_message.reply_text(
                 PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
                 reply_markup=InlineKeyboardMarkup(buttons),
