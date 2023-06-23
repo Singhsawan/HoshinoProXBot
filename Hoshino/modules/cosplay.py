@@ -26,8 +26,8 @@ async def ncosplay(_,msg):
             ]
         ))
     else:
-       ncosplay = requests.get("https://waifu-api.vercel.pbot/items/1").json()
+       ncosplay = requests.get("https://waifu-api.vercel.app/items/1").json()
 
-       await msg.reply_photo(ncosplay, caption=f"Cosplay By @{pbot.me.username}\nCredits: @NovaXMod")
+       await msg.reply_photo(ncosplay, caption=f"Cosplay By \nCredits: @NovaXMod")
 
 
