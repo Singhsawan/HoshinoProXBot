@@ -13,7 +13,7 @@ from Hoshino import pbot
 
 @pbot.on_message(filters.command("cosplay"))
 async def cosplay(_,msg):
-    img = requests.get("https://waifu-api.vercel.pbot").json()
+    img = requests.get("https://waifu-api.vercel.app").json()
     await msg.reply_photo(img, caption=f"Cosplay By @{pbot.me.username}\nCredits: @NovaXMod")
 
 @pbot.on_message(filters.command("ncosplay"))
