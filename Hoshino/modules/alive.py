@@ -15,18 +15,6 @@ START_IMG = (
     "https://telegra.ph/file/ae35d8a131d0e175c0e49.jpg",
 )
 
-START_VID = (
-    "https://telegra.ph/file/e374ba92cd333abe12c8a.mp4",
-    "https://telegra.ph/file/39a18d24aa651ef6497af.mp4",
-    "https://telegra.ph/file/96fed135fe1820925555e.mp4",
-    "https://telegra.ph/file/c38a9d63ac2355075a534.mp4",
-    "https://telegra.ph/file/ed6111ed26510b0af4357.mp4",
-    "https://telegra.ph/file/bbdaf08bbefc3df7f81c9.mp4",
-    "https://telegra.ph/file/65df8a4d8df645b9b5be9.mp4",
-    "https://telegra.ph/file/dab74ea839ad9ffdfc12b.mp4",
-    "https://telegra.ph/file/52241f62d8bc991605e6e.mp4",
-    "https://telegra.ph/file/047f6761ebfbf4f6539d2.mp4"
-)
 
 
 @pbot.on_message(filters.command("alive"))
@@ -43,7 +31,7 @@ async def awake(_, message: Message):
         ]
     ]
     await message.reply_photo(
-        random.choice(START_VID),
+        random.choice(START_IMG),
         caption=TEXT,
         reply_markup=InlineKeyboardMarkup(BUTTON),
     )
