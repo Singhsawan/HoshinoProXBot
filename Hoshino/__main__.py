@@ -76,7 +76,7 @@ PM_START_TEXT = """
 
 *๏ ᴛʜɪs 
 [➻]({}) ᴛʜᴇ ᴍᴏsᴛ ᴩᴏᴡᴇʀғᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴩ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ᴡɪᴛʜ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ᴀɴᴅ ᴜsᴇғᴜʟ ғᴇᴀᴛᴜʀᴇs.
-
+{}
 ──────────────────
 *๏ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴍᴏᴅᴜʟᴇs ᴀɴᴅ ᴄᴏᴍᴍᴀɴᴅs.*
 """
@@ -202,7 +202,7 @@ def start(update: Update, context: CallbackContext):
 
         else:
              first_name = update.effective_user.first_name
-            update.effective_message.reply_text(
+                update.effective_message.reply_text(,
                 PM_START_TEXT.format(random.choice(PHOTO,
                    escape_markdown(first_name),
                     escape_markdown(uptime),
