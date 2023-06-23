@@ -29,9 +29,8 @@ async def awake(_, message: Message):
             InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_CHAT}"),
         ]
     ]
-    await message.reply_video(
-        # video=random.choice(START_IMG),
-        video="https://telegra.ph/file/047f6761ebfbf4f6539d2.mp4"
+    await message.reply_photo(
+        photo=random.choice(START_IMG),
         caption=TEXT,
         reply_markup=InlineKeyboardMarkup(BUTTON),
     )
