@@ -3,6 +3,7 @@ import re
 import time
 from platform import python_version as y
 from sys import argv
+import random
 
 from pyrogram import __version__ as pyrover
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
@@ -109,6 +110,17 @@ HELP_STRINGS = f"""
   ‣ ɪɴ ᴘᴍ : ᴡɪʟʟ ꜱᴇɴᴅ ʏᴏᴜ ʜᴇʟᴘ ꜰᴏʀ ᴀʟʟ ꜱᴜᴘᴘᴏʀᴛᴇᴅ ᴍᴏᴅᴜʟᴇꜱ.
   ‣ ɪɴ ɢʀᴏᴜᴘ : ᴡɪʟʟ ʀᴇᴅɪʀᴇᴄᴛ ʏᴏᴜ ᴛᴏ ᴘᴍ, ᴡɪᴛʜ ᴀʟʟ ᴛʜᴀᴛ ʜᴇʟᴘ ᴍᴏᴅᴜʟᴇꜱ."""
 
+START_STIKERS = (
+    "CAACAgIAAxkBAAM8ZJM-4YzXU-_yTyk2m73D9vohpXYAAuUrAAJjCvlJzcmQ4GLMbX4vBA",
+    "CAACAgIAAxkBAAM-ZJM-5RhfcXlO-TH-1B6dQclaJKEAAkkvAALnYMBJ2MsGH8xIy0svBA",
+    "CAACAgIAAxkBAAM_ZJM-6PGkJN2ejoYw9b12QSltxSkAAl8tAAI4V_lJfGkzwLW4ubkvBA",
+    "CAACAgIAAxkBAANAZJM-6hZygx1uKzD7B-g9ePQLZIsAAmIqAAISQchJfJYxIEYPWuQvBA",
+    "CAACAgIAAxkBAANBZJM-7JjjLhRCxqSW_wGW0iXywisAAsYoAAIFjPhJtnU4kXcp5MsvBA",
+    "CAACAgIAAxkBAANCZJM-7lyus69tnVznMHzN8yYa17YAAistAAIW1thJ66oLQhUnETEvBA"
+)
+START_STIKER = random.choice(START_STIKERS)
+
+
 IMPORTED = {}
 MIGRATEABLE = []
 HELPABLE = {}
@@ -204,7 +216,7 @@ def start(update: Update, context: CallbackContext):
         else:
             first_name = update.effective_user.first_name
             update.effective_message.reply_sticker(
-                "CAACAgUAAxkBAAJYsmLWRvm70cE-mmxSNCovEf4v1ueJAAIcCAACbMK4VuL4EmZEkq8WKQQ"
+                START_STIKER
             )
             update.effective_message.reply_text(
                 PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
