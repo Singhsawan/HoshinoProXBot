@@ -74,7 +74,7 @@ def get_readable_time(seconds: int) -> str:
 PM_START_TEXT = """
 *ʜᴇʏ* {}, 
 
-*๏ ᴛʜɪs ɪs* {} 
+*๏ ᴛʜɪs 
 [➻]({}) ᴛʜᴇ ᴍᴏsᴛ ᴩᴏᴡᴇʀғᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴩ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ᴡɪᴛʜ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ᴀɴᴅ ᴜsᴇғᴜʟ ғᴇᴀᴛᴜʀᴇs.
 
 ──────────────────
@@ -201,7 +201,7 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rᴜʟᴇs"].send_rules(update, args[0], from_pm=True)
 
         else:
-       first_name = update.effective_user.first_name
+             first_name = update.effective_user.first_name
             update.effective_message.reply_text(
                 PM_START_TEXT.format(random.choice(PHOTO,
                    escape_markdown(first_name),
