@@ -72,10 +72,11 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 PM_START_TEXT = """
+[ʚ]{()}
 *ʜᴇʏ* {}, 🥀
 
 *๏ ᴛʜɪs ɪs* {}!
-[{➻}](https://telegra.ph/file/665c47c935f94ba13efcd.jpg) ᴛʜᴇ ᴍᴏsᴛ ᴩᴏᴡᴇʀғᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴩ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ᴡɪᴛʜ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ᴀɴᴅ ᴜsᴇғᴜʟ ғᴇᴀᴛᴜʀᴇs.
+➻ ᴛʜᴇ ᴍᴏsᴛ ᴩᴏᴡᴇʀғᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴩ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ᴡɪᴛʜ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ᴀɴᴅ ᴜsᴇғᴜʟ ғᴇᴀᴛᴜʀᴇs.
 
 ──────────────────
 *๏ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴍᴏᴅᴜʟᴇs ᴀɴᴅ ᴄᴏᴍᴍᴀɴᴅs.*
@@ -230,12 +231,17 @@ def start(update: Update, context: CallbackContext):
                 timeout=60,
             )
             # first_name = update.effective_user.first_name
+            # update.effective_message.reply_sticker(
+            #     random.choice(START_STIKERS),
+            #     timeout=60,
+            # )
+            #first_name = update.effective_user.first_name
            # update.effective_message.reply_photo(
                #random.choice(PHOTO),
                 #timeout=60,
-            #)
+           
             update.effective_message.reply_text(
-                PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
+                PM_START_TEXT.format(random.choice(PHOTO),(escape_markdown(first_name), BOT_NAME),
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
