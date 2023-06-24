@@ -7,6 +7,8 @@ import telegram.ext as tg
 from pyrogram import Client, errors
 from telethon import TelegramClient
 
+from Hoshino.services.quoteapi import Quotly
+
 StartTime = time.time()
 
 # enable logging
@@ -172,3 +174,5 @@ from Hoshino.modules.helper_funcs.handlers import (
 tg.RegexHandler = CustomRegexHandler
 tg.CommandHandler = CustomCommandHandler
 tg.MessageHandler = CustomMessageHandler
+
+quotly = Quotly()
