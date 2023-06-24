@@ -237,6 +237,7 @@ def start(update: Update, context: CallbackContext):
                 disable_web_page_preview=False
                 timeout=60,
          )
+                                     
        else:
         update.effective_message.reply_photo(
             START_IMG,
