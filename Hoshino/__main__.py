@@ -221,12 +221,7 @@ def start(update: Update, context: CallbackContext):
             elif args[0][1:].isdigit() and "rᴜʟᴇs" in IMPORTED:
                 IMPORTED["rᴜʟᴇs"].send_rules(update, args[0], from_pm=True)
 
-        else:
-            first_name = update.effective_user.first_name
-            update.effective_message.reply_sticker(
-                random.choice(START_STIKERS),
-                timeout=60,
-            )
+        
 
             update.effective_message.reply_text(
                 PM_START_TEXT.format(random.choice(PHOTO),(escape_markdown(first_name),
@@ -236,7 +231,7 @@ def start(update: Update, context: CallbackContext):
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
             )
-    else:
+       else:
         update.effective_message.reply_photo(
             START_IMG,
             caption="ɪ ᴀᴍ ᴀʟɪᴠᴇ ʙᴀʙʏ !\n<b>ɪ ᴅɪᴅɴ'ᴛ sʟᴇᴘᴛ sɪɴᴄᴇ​:</b> <code>{}</code>".format(
