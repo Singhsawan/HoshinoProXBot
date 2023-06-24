@@ -212,13 +212,16 @@ def start(update: Update, context: CallbackContext):
             update.effective_message.reply_sticker(
                 random.choice(START_STIKERS)
             )
-            update.effective_message.reply_photo(
-                PM_START_TEXT.format(random.choice(PHOTO),
-                escape_markdown(BOT_NAME),first_name),
+            first_name = update.effective_user.first_name
+            update.effective_message.reply_text(
+                PM_START_TEXT.format(random.choice(PHOTO),escape_markdown(first_name),
+                    escape_markdown(uptime),
+                ),
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
             )
+            
     else:
         update.effective_message.reply_photo(
             START_IMG,
