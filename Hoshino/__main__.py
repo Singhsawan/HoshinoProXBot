@@ -219,7 +219,12 @@ def start(update: Update, context: CallbackContext):
                     send_settings(match.group(1), update.effective_user.id, True)
 
             elif args[0][1:].isdigit() and "rᴜʟᴇs" in IMPORTED:
-                IMPORTED["rᴜʟᴇs"].send_rules(update, args[0], from_pm=True)
+             else:
+            first_name = update.effective_user.first_name
+            update.effective_message.reply_sticker(
+                random.choice(START_STIKERS),
+                timeout=60,
+                )   IMPORTED["rᴜʟᴇs"].send_rules(update, args[0], from_pm=True)
 
         
 
@@ -229,8 +234,9 @@ def start(update: Update, context: CallbackContext):
                ),                                       
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
+                disable_web_page_preview=False
                 timeout=60,
-            )
+         )
        else:
         update.effective_message.reply_photo(
             START_IMG,
