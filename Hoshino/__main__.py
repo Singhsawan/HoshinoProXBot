@@ -75,9 +75,9 @@ def get_readable_time(seconds: int) -> str:
 PM_START_TEXT = """
 *ʜᴇʏ* {}, 🥀
 
-*๏ ᴛʜɪs ɪs* {} [ ]({})!
+*๏ ᴛʜɪs ɪs* ᴀɪ ʜᴏsʜɪɴᴏ [ ]({})!
 ➻ ᴛʜᴇ ᴍᴏsᴛ ᴩᴏᴡᴇʀғᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴩ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ᴡɪᴛʜ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ᴀɴᴅ ᴜsᴇғᴜʟ ғᴇᴀᴛᴜʀᴇs.
-
+{}
 ──────────────────
 *๏ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴍᴏᴅᴜʟᴇs ᴀɴᴅ ᴄᴏᴍᴍᴀɴᴅs.*
 """
@@ -229,10 +229,12 @@ def start(update: Update, context: CallbackContext):
             )
 
             update.effective_message.reply_text(
-                PM_START_TEXT.format(random.choice(PHOTO),(escape_markdown(first_name), BOT_NAME),
+                PM_START_TEXT.format(random.choice(PHOTO),(escape_markdown(first_name),
+                 escape_markdown(uptime), 
+               ),                                       
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
-                timeout=30,
+                timeout=60,
             )
     else:
         update.effective_message.reply_photo(
