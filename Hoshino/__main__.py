@@ -1,9 +1,9 @@
 import importlib
 import re
 import time
+import random
 from platform import python_version as y
 from sys import argv
-import random
 
 from pyrogram import __version__ as pyrover
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
@@ -71,34 +71,16 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
+
 PM_START_TEXT = """
-[ʚ]{()}
 *ʜᴇʏ* {}, 🥀
 
-*๏ ᴛʜɪs ɪs* {}!
+*๏ ᴛʜɪs ɪs* {} !
 ➻ ᴛʜᴇ ᴍᴏsᴛ ᴩᴏᴡᴇʀғᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴩ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ᴡɪᴛʜ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ᴀɴᴅ ᴜsᴇғᴜʟ ғᴇᴀᴛᴜʀᴇs.
 
 ──────────────────
 *๏ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴍᴏᴅᴜʟᴇs ᴀɴᴅ ᴄᴏᴍᴍᴀɴᴅs.*
 """
-
-
-
-START_STIKERS = (
-    "CAACAgIAAxkBAAM8ZJM-4YzXU-_yTyk2m73D9vohpXYAAuUrAAJjCvlJzcmQ4GLMbX4vBA",
-    "CAACAgIAAxkBAAM-ZJM-5RhfcXlO-TH-1B6dQclaJKEAAkkvAALnYMBJ2MsGH8xIy0svBA",
-    "CAACAgIAAxkBAAM_ZJM-6PGkJN2ejoYw9b12QSltxSkAAl8tAAI4V_lJfGkzwLW4ubkvBA",
-    "CAACAgIAAxkBAANAZJM-6hZygx1uKzD7B-g9ePQLZIsAAmIqAAISQchJfJYxIEYPWuQvBA",
-    "CAACAgIAAxkBAANAZJM-6hZygx1uKzD7B-g9ePQLZIsAAmIqAAISQchJfJYxIEYPWuQvBA",
-    "CAACAgIAAxkBAANCZJM-7lyus69tnVznMHzN8yYa17YAAistAAIW1thJ66oLQhUnETEvBA"
-)
-
-PHOTO = (
-    "https://telegra.ph/file/8d21b9efae55d4e0fa200.jpg", 
-    "https://telegra.ph/file/164a128f89fa2a111beea.jpg", 
-    "https://telegra.ph/file/81bc161d996381af71ff1.jpg", 
-)
-
 
 buttons = [
     [
@@ -121,15 +103,12 @@ buttons = [
 ]
 
 HELP_STRINGS = f"""
-*» {BOT_NAME} ᴇxᴄʟᴜsɪᴠᴇ ꜰᴇᴀᴛᴜʀᴇs* [ ](https://telegra.ph/file/8e6f8bad1d448e3398468.jpg)
+*» {BOT_NAME} ᴇxᴄʟᴜsɪᴠᴇ ꜰᴇᴀᴛᴜʀᴇs*
 
 ➲ /start : ꜱᴛᴀʀᴛꜱ ᴍᴇ | ᴀᴄᴄᴏʀᴅɪɴɢ ᴛᴏ ᴍᴇ ʏᴏᴜ'ᴠᴇ ᴀʟʀᴇᴀᴅʏ ᴅᴏɴᴇ ɪᴛ.
 ➲ /help  : ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅꜱ ꜱᴇᴄᴛɪᴏɴ.
   ‣ ɪɴ ᴘᴍ : ᴡɪʟʟ ꜱᴇɴᴅ ʏᴏᴜ ʜᴇʟᴘ ꜰᴏʀ ᴀʟʟ ꜱᴜᴘᴘᴏʀᴛᴇᴅ ᴍᴏᴅᴜʟᴇꜱ.
   ‣ ɪɴ ɢʀᴏᴜᴘ : ᴡɪʟʟ ʀᴇᴅɪʀᴇᴄᴛ ʏᴏᴜ ᴛᴏ ᴘᴍ, ᴡɪᴛʜ ᴀʟʟ ᴛʜᴀᴛ ʜᴇʟᴘ ᴍᴏᴅᴜʟᴇꜱ."""
-
-
-
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -224,10 +203,9 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rᴜʟᴇs"].send_rules(update, args[0], from_pm=True)
 
         else:
-
             first_name = update.effective_user.first_name
             update.effective_message.reply_sticker(
-                random.choice(START_STIKERS)
+                "CAACAgIAAxkBAAM8ZJM-4YzXU-_yTyk2m73D9vohpXYAAuUrAAJjCvlJzcmQ4GLMbX4vBA"
             )
             update.effective_message.reply_text(
                 PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
@@ -235,22 +213,6 @@ def start(update: Update, context: CallbackContext):
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
             )
-            # first_name = update.effective_user.first_name
-            # update.effective_message.reply_sticker(
-            #     random.choice(START_STIKERS),
-            #     timeout=60,
-            # )
-            #first_name = update.effective_user.first_name
-           # update.effective_message.reply_photo(
-               #random.choice(PHOTO),
-                #timeout=60,
-           
-            # update.effective_message.reply_text(
-            #     PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
-            #     reply_markup=InlineKeyboardMarkup(buttons),
-            #     parse_mode=ParseMode.MARKDOWN,
-            #     timeout=60,
-            # )
     else:
         update.effective_message.reply_photo(
             START_IMG,
@@ -386,7 +348,7 @@ def Fallen_about_callback(update: Update, context: CallbackContext):
     if query.data == "fallen_":
         uptime = get_readable_time((time.time() - StartTime))
         query.message.edit_text(
-            text=f"*ʜᴇʏ,*\n  *ᴛʜɪs ɪs {BOT_NAME}*"
+            text=f"*ʜᴇʏ,* \n  *ᴛʜɪs ɪs {BOT_NAME}*"
             "\n*ᴀ ᴘᴏᴡᴇʀꜰᴜʟ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ʙᴜɪʟᴛ ᴛᴏ ʜᴇʟᴘ ʏᴏᴜ ᴍᴀɴᴀɢᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴇᴀꜱɪʟʏ ᴀɴᴅ ᴛᴏ ᴘʀᴏᴛᴇᴄᴛ ʏᴏᴜʀ ɢʀᴏᴜᴘ ꜰʀᴏᴍ ꜱᴄᴀᴍᴍᴇʀꜱ ᴀɴᴅ ꜱᴘᴀᴍᴍᴇʀꜱ.*"
             "\n*ᴡʀɪᴛᴛᴇɴ ɪɴ ᴩʏᴛʜᴏɴ ᴡɪᴛʜ sǫʟᴀʟᴄʜᴇᴍʏ ᴀɴᴅ ᴍᴏɴɢᴏᴅʙ ᴀs ᴅᴀᴛᴀʙᴀsᴇ.*"
             "\n\n────────────────────"
@@ -446,10 +408,10 @@ def Fallen_about_callback(update: Update, context: CallbackContext):
                         InlineKeyboardButton(
                             text="ᴅᴇᴠᴇʟᴏᴩᴇʀ", url=f"tg://user?id={OWNER_ID}"
                         ),
-                        InlineKeyboardButton(
-                            text="ɢɪᴛʜᴜʙ",
-                            url="https://github.com/AnonymousX1025",
-                        ),
+                        # InlineKeyboardButton(
+                        #     text="ɢɪᴛʜᴜʙ",
+                        #     url="https://github.com/AnonymousX1025",
+                        # ),
                     ],
                     [
                         InlineKeyboardButton(text="◁", callback_data="fallen_"),
@@ -483,8 +445,10 @@ def Source_about_callback(update: Update, context: CallbackContext):
 ᴀɴᴅ ᴜsɪɴɢ [sǫʟᴀʟᴄʜᴇᴍʏ](https://www.sqlalchemy.org) ᴀɴᴅ [ᴍᴏɴɢᴏ](https://cloud.mongodb.com) ᴀs ᴅᴀᴛᴀʙᴀsᴇ.
 
 
+*ʜᴇʀᴇ ɪs ᴍʏ sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ :* [ɢɪᴛʜᴜʙ](https://github.com/AnonymousX1025/Hoshino)
 
-{BOT_NAME} ɪs ʟɪᴄᴇɴsᴇᴅ ᴜɴᴅᴇʀ ᴛʜᴇ [ᴍɪᴛ ʟɪᴄᴇɴsᴇ](https://github.com/epic-designer/HoshinoXProBot/blob/main/LICENSE).
+
+{BOT_NAME} ɪs ʟɪᴄᴇɴsᴇᴅ ᴜɴᴅᴇʀ ᴛʜᴇ [ᴍɪᴛ ʟɪᴄᴇɴsᴇ](https://github.com/AnonymousX1025/Hoshino/blob/master/LICENSE).
 © 2022 - 2023 | [sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ](https://t.me/{SUPPORT_CHAT}), ᴀʟʟ ʀɪɢʜᴛs ʀᴇsᴇʀᴠᴇᴅ.
 """,
             parse_mode=ParseMode.MARKDOWN,
