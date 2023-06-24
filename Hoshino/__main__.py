@@ -235,7 +235,7 @@ def start(update: Update, context: CallbackContext):
                #random.choice(PHOTO),
                 #timeout=60,
             
-            update.effective_message.reply_text(,
+            update.effective_message.reply_text
                 PM_START_TEXT.format(random.choice(PHOTO),(escape_markdown(first_name), BOT_NAME),
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
