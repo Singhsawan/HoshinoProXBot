@@ -191,7 +191,7 @@ TOSS_HANDLER = DisableAbleCommandHandler("toss", toss)
 SHRUG_HANDLER = DisableAbleCommandHandler("shrug", shrug)
 BLUETEXT_HANDLER = DisableAbleCommandHandler("bluetext", bluetext)
 RLG_HANDLER = DisableAbleCommandHandler("rlg", rlg)
-COSPLAY_HANDLER = DisableAbleCommandHandler("cosplay", cosplay)
+# COSPLAY_HANDLER = DisableAbleCommandHandler("cosplay", cosplay)
 DECIDE_HANDLER = DisableAbleCommandHandler("decide", decide)
 WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify)
 FLIRT_HANDLER = DisableAbleCommandHandler("flirt", flirt)
@@ -203,7 +203,7 @@ dispatcher.add_handler(SHRUG_HANDLER)
 dispatcher.add_handler(BLUETEXT_HANDLER)
 dispatcher.add_handler(RLG_HANDLER)
 dispatcher.add_handler(DECIDE_HANDLER)
-dispatcher.add_handler(COSPLAY_HANDLER)
+# dispatcher.add_handler(COSPLAY_HANDLER)
 dispatcher.add_handler(FLIRT_HANDLER)
 
 __mod_name__ = "𝙵ᴜɴ"
@@ -226,6 +226,6 @@ __handlers__ = [
     RLG_HANDLER,
     DECIDE_HANDLER,
     WEEBIFY_HANDLER,
-    COSPLAY_HANDLER,
+    # COSPLAY_HANDLER,
     FLIRT_HANDLER,
 ]
