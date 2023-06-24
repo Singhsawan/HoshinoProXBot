@@ -75,7 +75,7 @@ def get_readable_time(seconds: int) -> str:
 PM_START_TEXT = """
 *ʜᴇʏ* {}, 🥀
 
-*๏ ᴛʜɪs ɪs* {} [ ](https://telegra.ph/file/8e6f8bad1d448e3398468.jpg)!
+*๏ ᴛʜɪs ɪs* {} [ ]({})!
 ➻ ᴛʜᴇ ᴍᴏsᴛ ᴩᴏᴡᴇʀғᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴩ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ᴡɪᴛʜ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ᴀɴᴅ ᴜsᴇғᴜʟ ғᴇᴀᴛᴜʀᴇs.
 
 ──────────────────
@@ -83,9 +83,11 @@ PM_START_TEXT = """
 """
 
 
-START_IMG
-
-
+PHOTO = (
+"https://telegra.ph/file/ae35d8a131d0e175c0e49.jpg",
+"https://telegra.ph/file/28296667cb727005c5f9e.jpg",
+"https://telegra.ph/file/b338214b85fee0c81aec5.jpg", 
+)
 START_STIKERS = (
     "CAACAgIAAxkBAAM8ZJM-4YzXU-_yTyk2m73D9vohpXYAAuUrAAJjCvlJzcmQ4GLMbX4vBA",
     "CAACAgIAAxkBAAM-ZJM-5RhfcXlO-TH-1B6dQclaJKEAAkkvAALnYMBJ2MsGH8xIy0svBA",
@@ -227,10 +229,10 @@ def start(update: Update, context: CallbackContext):
             )
 
             update.effective_message.reply_text(
-                PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
+                PM_START_TEXT.format(random.choice(PHOTO),(escape_markdown(first_name), BOT_NAME),
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
+                timeout=30,
             )
     else:
         update.effective_message.reply_photo(
@@ -441,7 +443,7 @@ def Fallen_about_callback(update: Update, context: CallbackContext):
     elif query.data == "fallen_back":
         first_name = update.effective_user.first_name
         query.message.edit_text(
-            PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
+            PM_START_TEXT.format(random.choice(PHOTO)(escape_markdown(first_name), BOT_NAME),
             reply_markup=InlineKeyboardMarkup(buttons),
             parse_mode=ParseMode.MARKDOWN,
             timeout=60,
