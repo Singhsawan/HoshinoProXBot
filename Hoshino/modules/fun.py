@@ -27,7 +27,6 @@ async def joke(event):
 def roll(update: Update, context: CallbackContext):
     update.message.reply_text(random.choice(range(1, 7)))
 
-
 @run_async
 def flirt(
     update: Update, context: CallbackContext

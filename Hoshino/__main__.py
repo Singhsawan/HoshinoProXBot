@@ -224,12 +224,12 @@ def start(update: Update, context: CallbackContext):
 
         else:
 
+            first_name = update.effective_user.first_name
+            update.effective_message.reply_sticker(
+                random.choice(START_STIKERS),
+                timeout=60,
+            )
             # first_name = update.effective_user.first_name
-            # update.effective_message.reply_sticker(
-            #     random.choice(START_STIKERS),
-            #     timeout=60,
-            # )
-            #first_name = update.effective_user.first_name
            # update.effective_message.reply_photo(
                #random.choice(PHOTO),
                 #timeout=60,
