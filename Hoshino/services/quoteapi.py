@@ -4,7 +4,7 @@ import os
 from telethon.tl import types
 from telethon.utils import get_display_name, get_peer_id
 
-from Hydra.utils.tools2 import async_searcher
+from Hoshino.utils.tools2 import async_searcher
 
 try:
     from aiohttp import ContentTypeError
