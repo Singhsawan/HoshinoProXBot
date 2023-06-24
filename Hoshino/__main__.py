@@ -4,7 +4,7 @@ import time
 import random
 from platform import python_version as y
 from sys import argv
-from Helper.helper import PHOTO
+from Helper.helper import PHOTO,START_STIKERS,START_VIDEO
 
 from pyrogram import __version__ as pyrover
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
@@ -206,7 +206,7 @@ def start(update: Update, context: CallbackContext):
         else:
             first_name = update.effective_user.first_name
             update.effective_message.reply_sticker(
-                "CAACAgIAAxkBAAM8ZJM-4YzXU-_yTyk2m73D9vohpXYAAuUrAAJjCvlJzcmQ4GLMbX4vBA"
+                random.choice(START_STIKERS)
             )
             update.effective_message.reply_text(
                 PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
