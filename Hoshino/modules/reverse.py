@@ -1,58 +1,72 @@
-import uuid
-from pyrogram import Client, filters
-from pyrogram.types import (InlineKeyboardMarkup, InlineKeyboardButton, Message)
-import httpx
+import requests
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
+from telegram.ext import CallbackContext, CommandHandler
 
-from Hoshino import pbot
+from Hoshino import TOKEN, dispatcher
 
-API_URL = 'https://sasta.tk/google_reverse'
+url = "https://karma-reverse-api2-0.vercel.app/reverse"
 
-class STRINGS:
-    REPLY_TO_MEDIA = 'Reply to a message having photo, sticker or document.'
-    THESE_MEDIA_TYPES_ONLY = 'Only <b>photo</b>, <b>sticker</b> and <b>document</b> media types are allowed.'
-    GIF_NOT_SUPPORTED = 'GIF reverse is currently not available.'
-    DOWNLOADING_MEDIA = '<b>• Downloading media...</b>'
-    UPLOADING_MEDIA = '<b>• Uploading media...</b>'
-    API_ERROR = '<b>An API Error occured while requesting:</b>:\n{}'
-    SUPPORT_CHAT = '<b>Support Chat:</b> @HelpSupportChat'
-    REVERSE_RESULT = '''
-<b>Search Keyword:</b> <code>{}</code>
-<b>Results link:</b> <a href='{}'>Link</a>.
 
-<b>Credits:</b> @SastaDev
-    '''
+def reverse(update: Update, context: CallbackContext):
+    if not update.effective_message.reply_to_message:
+        update.effective_message.reply_text("ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴘʜᴏᴛᴏ ᴏʀ ᴀ sᴛɪᴄᴋᴇʀ.")
 
-COMMANDS = ['reverse', 'grs', 'pp']
+    elif update.effective_message.reply_to_message.photo:
+        msg = update.effective_message.reply_text("sᴇᴀʀᴄʜɪɴɢ ғᴏʀ ɪᴍᴀɢᴇ.....")
 
-@pbot.on_message(filters.command(COMMANDS))
-async def on_reverse(client: Client, message: Message) -> Message:
-    if not message.reply_to_message or not message.reply_to_message.media:
-        await message.reply(STRINGS.REPLY_TO_MEDIA)
-        return
-    media_type = message.reply_to_message.media
-    if media_type not in ('photo', 'sticker', 'document'):
-        if media_type == 'animation':
-            await message.reply(STRINGS.GIF_NOT_SUPPORTED)
-            return
-        await message.reply(STRINGS.THESE_MEDIA_TYPES_ONLY)
-        return
-    status_msg = await message.reply(STRINGS.DOWNLOADING_MEDIA)
-    file_path = f'downloads/{uuid.uuid4()}'
-    await message.reply_to_message.download(file_path)
-    await status_msg.edit(STRINGS.UPLOADING_MEDIA)
-    async with httpx.AsyncClient(timeout=30) as async_client:
-        with open(file_path, 'rb') as file:
-            files = {'file': file}
-            response = await async_client.post(API_URL, files=files)
-        response_json = response.json()
-        if response.status_code != 200:
-            await message.reply(STRINGS.API_ERROR.format(response_json['error']) + STRINGS.SUPPORT_CHAT)
-            return
-        search_keyword = response_json['keyword']
-        url = response_json['url']
-    text = STRINGS.REVERSE_RESULT.format(search_keyword, url)
-    reply_markup = [
-        [InlineKeyboardButton('Open Link', url=url)]
-        ]
-    await message.reply(text, reply_markup=InlineKeyboardMarkup(reply_markup))
-    await status_msg.delete()
+        photo_id = update.effective_message.reply_to_message.photo[-1].file_id
+        get_path = requests.post(
+            f"https://api.telegram.org/bot{TOKEN}/getFile?file_id={photo_id}"
+        ).json()
+        file_path = get_path["result"]["file_path"]
+        data = {
+            "imageUrl": f"https://images.google.com/searchbyimage?safe=off&sbisrc=tg&image_url=https://api.telegram.org/file/bot{TOKEN}/{file_path}"
+        }
+
+        response = requests.post(url, json=data)
+        result = response.json()
+        if response.ok:
+            msg.edit_text(
+                f"[{result['data']['resultText']}]({result['data']['similarUrl']})",
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=InlineKeyboardMarkup(
+                    [[InlineKeyboardButton("ᴀɴɪᴍᴇ 🐾", url="https://t.me/Animez_96")]]
+                ),
+            )
+        else:
+            update.effective_message.reply_text("sᴏᴍᴇ ᴇxᴄᴇᴘᴛɪᴏɴ ᴏᴄᴄᴜʀᴇᴅ")
+
+    elif update.effective_message.reply_to_message.sticker:
+        msg = update.effective_message.reply_text("sᴇᴀʀᴄʜɪɴɢ ғᴏʀ sᴛɪᴄᴋᴇʀ.....")
+
+        sticker_id = update.effective_message.reply_to_message.sticker.file_id
+        get_path = requests.post(
+            f"https://api.telegram.org/bot{TOKEN}/getFile?file_id={sticker_id}"
+        ).json()
+        file_path = get_path["result"]["file_path"]
+        data = {
+            "imageUrl": f"https://images.google.com/searchbyimage?safe=off&sbisrc=tg&image_url=https://api.telegram.org/file/bot{TOKEN}/{file_path}"
+        }
+
+        response = requests.post(url, json=data)
+        result = response.json()
+        if response.ok:
+            msg.edit_text(
+                f"[{result['data']['resultText']}]({result['data']['similarUrl']})",
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=InlineKeyboardMarkup(
+                    [[InlineKeyboardButton("ᴀɴɪᴍᴇ 🐾", url="https://t.me/Animez_96")]]
+                ),
+            )
+        else:
+            update.effective_message.reply_text("sᴏᴍᴇ ᴇxᴄᴇᴘᴛɪᴏɴ ᴏᴄᴄᴜʀᴇᴅ")
+
+    else:
+        update.effective_message.reply_text("ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴘʜᴏᴛᴏ ᴏʀ ᴀ sᴛɪᴄᴋᴇʀ.")
+
+
+reverse_handler = CommandHandler(
+    ["grs", "reverse", "pp", "p", "P"], reverse, run_async=True
+)
+
+dispatcher.add_handler(reverse_handler)
