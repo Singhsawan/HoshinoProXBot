@@ -95,6 +95,12 @@ START_STIKERS = (
     "CAACAgIAAxkBAANCZJM-7lyus69tnVznMHzN8yYa17YAAistAAIW1thJ66oLQhUnETEvBA"
 )
 
+PHOTO = (
+    "https://telegra.ph/file/8d21b9efae55d4e0fa200.jpg", 
+    "https://telegra.ph/file/164a128f89fa2a111beea.jpg", 
+    "https://telegra.ph/file/81bc161d996381af71ff1.jpg", 
+)
+
 
 buttons = [
     [
@@ -220,12 +226,17 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rᴜʟᴇs"].send_rules(update, args[0], from_pm=True)
 
         else:
+
+            # first_name = update.effective_user.first_name
+            # update.effective_message.reply_sticker(
+            #     random.choice(START_STIKERS),
+            #     timeout=60,
+            # )
             first_name = update.effective_user.first_name
-            update.effective_message.reply_sticker(
-                random.choice(START_STIKERS),
+            update.effective_message.reply_photo(
+                random.choice(PHOTO),
                 timeout=60,
             )
-
             update.effective_message.reply_text(
                 PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
                 reply_markup=InlineKeyboardMarkup(buttons),
