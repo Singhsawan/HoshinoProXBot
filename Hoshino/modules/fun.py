@@ -41,9 +41,9 @@ def toss(update: Update, context: CallbackContext):
     update.message.reply_text(random.choice(fun_strings.TOSS))
 
 
-@run_async
-def cosplay(update: Update, context: CallbackContext):
-    update.effective_message.reply_photo(random.choice(fun_strings.COSPLAY))
+# @run_async
+# def cosplay(update: Update, context: CallbackContext):
+#     update.effective_message.reply_photo(random.choice(fun_strings.COSPLAY))
 
 
 @run_async
