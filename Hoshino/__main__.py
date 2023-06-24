@@ -4,6 +4,7 @@ import time
 import random
 from platform import python_version as y
 from sys import argv
+from Helper.helper import PHOTO
 
 from pyrogram import __version__ as pyrover
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
@@ -714,7 +715,7 @@ def main():
         try:
             dispatcher.bot.send_photo(
                 chat_id=f"@{SUPPORT_CHAT}",
-                photo=START_IMG,
+                photo=random.choice(PHOTO),
                 caption=f"""
 ㅤ🥀 {BOT_NAME} ɪs ᴀʟɪᴠᴇ ʙᴀʙʏ...
 
