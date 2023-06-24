@@ -9,7 +9,7 @@ class Config(object):
 
     DATABASE_URL = ""  # A sql database url from elephantsql.com
 
-    BOT_NAME = Ai Hoshino
+    BOT_NAME = "Ai Hoshino"
     
     EVENT_LOGS = ()  # Event logs channel to note down important bot level events
 
