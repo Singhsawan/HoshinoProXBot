@@ -83,7 +83,6 @@ PM_START_TEXT = """
 """
 
 
-START_IMG
 
 
 START_STIKERS = (
