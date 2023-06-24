@@ -213,7 +213,7 @@ def start(update: Update, context: CallbackContext):
                 random.choice(START_STIKERS)
             )
             update.effective_message.reply_text(
-                PM_START_TEXT.format(choice.random(PHOTO)
+                PM_START_TEXT.format(choice.random(PHOTO),
                 escape_markdown(first_name),BOT_NAME),
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
