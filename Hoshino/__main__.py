@@ -219,7 +219,7 @@ def start(update: Update, context: CallbackContext):
                     send_settings(match.group(1), update.effective_user.id, True)
 
             elif args[0][1:].isdigit() and "rᴜʟᴇs" in IMPORTED:
-             else:
+            
             first_name = update.effective_user.first_name
             update.effective_message.reply_sticker(
                 random.choice(START_STIKERS),
