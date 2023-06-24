@@ -74,7 +74,7 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
- [{AI HOSHINO}](), 🥀
+ {}[] (), 🥀
 
 *๏ hey {}!
 ➻ ᴛʜᴇ ᴍᴏsᴛ ᴩᴏᴡᴇʀғᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴩ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ᴡɪᴛʜ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ᴀɴᴅ ᴜsᴇғᴜʟ ғᴇᴀᴛᴜʀᴇs.
@@ -212,7 +212,7 @@ def start(update: Update, context: CallbackContext):
             update.effective_message.reply_sticker(
                 random.choice(START_STIKERS)
             )
-            update.effective_message.reply_text(
+            update.effective_message.reply_photo(
                 PM_START_TEXT.format(random.choice(PHOTO),
                 escape_markdown(BOT_NAME),first_name),
                 reply_markup=InlineKeyboardMarkup(buttons),
