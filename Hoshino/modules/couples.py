@@ -54,10 +54,12 @@ async def couple(_, message):
             c1_mention = (await pbot.get_users(c1_id)).mention
             c2_mention = (await pbot.get_users(c2_id)).mention
 
-            couple_selection_message = f"""**Couple of the day :**
+            couple_selection_message = f"""**💌 ᴄᴏᴜᴘʟᴇs ᴏғ ᴛʜᴇ ᴅᴀʏ : :
+            
+            **
+{c1_mention} + {c2_mention} =  💞
 
-{c1_mention} + {c2_mention} = 😘
-__New couple of the day can be chosen at 12AM {tomorrow}__"""
+ɴᴇᴡ ᴄᴏᴜᴘʟᴇ ᴏғ ᴛʜᴇ ᴅᴀʏ ᴄᴀɴ ʙᴇ ᴄʜᴏsᴇɴ ᴀᴛ 12AM {tomorrow}__"""
             await pbot.send_message(message.chat.id, text=couple_selection_message)
             couple = {"c1_id": c1_id, "c2_id": c2_id}
             await save_couple(chat_id, today, couple)
@@ -67,12 +69,13 @@ __New couple of the day can be chosen at 12AM {tomorrow}__"""
             c2_id = int(is_selected["c2_id"])
             c1_name = (await pbot.get_users(c1_id)).mention
             c2_name = (await pbot.get_users(c2_id)).mention
-            couple_selection_message = f"""Couple of the day :
+            couple_selection_message = f"""💌 ᴄᴏᴜᴘʟᴇs ᴏғ ᴛʜᴇ ᴅᴀʏ : :
 
-{c1_name} + {c2_name} = 😘
-__New couple of the day can be chosen at 12AM {tomorrow}__"""
+{c1_name} + {c2_name} =  💞
+
+ɴᴇᴡ ᴄᴏᴜᴘʟᴇ ᴏғ ᴛʜᴇ ᴅᴀʏ ᴄᴀɴ ʙᴇ ᴄʜᴏsᴇɴ ᴀᴛ 12AM {tomorrow}__"""
             await pbot.send_photo(message.chat.id, 
-                                  photo=random.choice(PHOTO),
+                                  photo="https://te.legra.ph/file/2590e47c86a4238cdfafc.jpg",
                                   caption=couple_selection_message
                                  )
     except Exception as e:
