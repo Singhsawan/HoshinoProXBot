@@ -725,7 +725,7 @@ def main():
                 chat_id=f"@{SUPPORT_CHAT}",
                 photo=random.choice(PHOTO),
                 caption=f"""
-ㅤ🥀 {BOT_NAME} ɪs ᴀʟɪᴠᴇ ʙᴀʙʏ...
+ㅤ {BOT_NAME} ɪs ᴀʟɪᴠᴇ ʙᴀʙʏ...
 
 ┏•────────────────•┓
 ㅤ》 **ᴘʏᴛʜᴏɴ :** `{y()}`
