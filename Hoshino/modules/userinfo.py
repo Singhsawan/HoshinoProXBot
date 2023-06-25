@@ -21,6 +21,7 @@ import Hoshino.modules.sql.userinfo_sql as sql
 from Hoshino import (
     DEMONS,
     DEV_USERS,
+    SUPPORT_CHAT,
     DRAGONS,
     INFOPIC,
     OWNER_ID,
@@ -229,6 +230,7 @@ def info(update: Update, context: CallbackContext):
         f"ㅤ ㅤㅤ    『 ᴜsᴇʀ ɪɴғᴏ 』\n•──────────────────•\n"
         f"⤷ <b>ᴜsᴇʀ ɪᴅ:</b> <code>{user.id}</code>\n"
         f"⤷ <b>ғɪʀsᴛ ɴᴀᴍᴇ:</b> {html.escape(user.first_name)}"
+        
     )
 
     if user.last_name:
@@ -386,7 +388,15 @@ def set_about_me(update: Update, context: CallbackContext):
 
 @sudo_plus
 def stats(update: Update, context: CallbackContext):
-    stats = "📊<b> ᴄᴜʀʀᴇɴᴛ sᴛᴀᴛs:</b>\n" + "\n".join([mod.__stats__() for mod in STATS])
+    stats = "📊<b> ᴄᴜʀʀᴇɴᴛ sᴛᴀᴛs:</b>\n" + "\n".join([mod.__stats__() for mod in STATS]) + f"""" 
+          
+          『 Mᴀᴅᴇ Bʏ : [KIRA](https://t.me/SIAmKira) 』
+          
+         [𝗦𝗨𝗣𝗣𝗢𝗥𝗧](https://t.me/{SUPPORT_CHAT}) | [𝗨𝗣𝗗𝗔𝗧𝗘𝗦](https://t.me/SoulSocietyXBotUpdate) 
+
+
+
+    """
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
     update.effective_message.reply_text(result, parse_mode=ParseMode.HTML)
 
