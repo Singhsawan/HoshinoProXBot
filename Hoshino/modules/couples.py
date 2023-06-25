@@ -6,7 +6,6 @@ from pyrogram.enums import ChatType
 
 from Hoshino import pbot
 from Hoshino.utils.mongo import get_couple, save_couple
-from Helper.helper import SHIPPING_IMG
 
 
 
@@ -33,7 +32,7 @@ today = str(dt()[0])
 tomorrow = str(dt_tom())
 
 
-@pbot.on_message(filters.command(["couple", "couples"]))
+@pbot.on_message(filters.command(["couple", "couples","shipping"]))
 async def couple(_, message):
     if message.chat.type == ChatType.PRIVATE:
         return await message.reply_text("This command only works in groups.")
@@ -75,7 +74,7 @@ async def couple(_, message):
 
 ɴᴇᴡ ᴄᴏᴜᴘʟᴇ ᴏғ ᴛʜᴇ ᴅᴀʏ ᴄᴀɴ ʙᴇ ᴄʜᴏsᴇɴ ᴀᴛ 12AM {tomorrow}__"""
             await pbot.send_photo(message.chat.id, 
-                                  photo={SHIPPING_IMG},
+                                  photo="https://telegra.ph/file/e7124ce4bc6e38a6bc76a.jpg",
                                   caption=couple_selection_message
                                  )
     except Exception as e:
