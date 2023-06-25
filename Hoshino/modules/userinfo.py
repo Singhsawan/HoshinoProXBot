@@ -389,11 +389,8 @@ def set_about_me(update: Update, context: CallbackContext):
 @sudo_plus
 def stats(update: Update, context: CallbackContext):
     stats = "📊<b> ᴄᴜʀʀᴇɴᴛ sᴛᴀᴛs:</b>\n" + "\n".join([mod.__stats__() for mod in STATS])
-    + "\n\n⍙ [𝙐𝙋𝘿𝘼𝙏𝙀𝙎](https://t.me/SoulSocietyXBotUpdate) | [𝙎𝙐𝙋𝙋𝙊𝙍𝙏](https://t.me/SoulSocietyXBotSupport)\n\n 「 𝙈𝘼𝘿𝙀 𝘽𝙔 [Kira](t.me/SIAmKira) 」\n"
+    + "\n\n [𝙐𝙋𝘿𝘼𝙏𝙀𝙎](https://t.me/SoulSocietyXBotUpdate) | [𝙎𝙐𝙋𝙋𝙊𝙍𝙏](https://t.me/SoulSocietyXBotSupport)\n\n 「 𝙈𝘼𝘿𝙀 𝘽𝙔 [Kira](t.me/SIAmKira) 」\n"
                 
-                
-            
-    
 
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
     update.effective_message.reply_text(result, parse_mode=ParseMode.HTML)
