@@ -77,6 +77,8 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
+────「 [AI Hoshino](https://telegra.ph/file/b338214b85fee0c81aec5.jpg) 」────
+
 *ʜᴇʏ* {}, 
 
 *๏ ᴛʜɪs ɪs* {}!
