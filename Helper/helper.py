@@ -27,3 +27,11 @@ START_VIDEO = [
 "https://telegra.ph/file/52241f62d8bc991605e6e.mp4",
 "https://telegra.ph/file/047f6761ebfbf4f6539d2.mp4",
 ]
+
+SHIPPING_IMG = [
+    "https://telegra.ph/file/060870869e22fb1b26ae4.jpg",
+    "https://telegra.ph/file/5054396b76bab9d9e2bf1.jpg",
+    "https://telegra.ph/file/34de955bacb089438c089.jpg",
+    "https://telegra.ph/file/e7124ce4bc6e38a6bc76a.jpg",
+    "https://telegra.ph/file/4a5a484343a3a2a051fbd.jpg",
+]

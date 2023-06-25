@@ -6,7 +6,7 @@ from pyrogram.enums import ChatType
 
 from Hoshino import pbot
 from Hoshino.utils.mongo import get_couple, save_couple
-from Helper.helper import START_STIKERS,START_VIDEO,PHOTO
+from Helper.helper import SHIPPING_IMG
 
 
 
@@ -75,7 +75,7 @@ async def couple(_, message):
 
 ɴᴇᴡ ᴄᴏᴜᴘʟᴇ ᴏғ ᴛʜᴇ ᴅᴀʏ ᴄᴀɴ ʙᴇ ᴄʜᴏsᴇɴ ᴀᴛ 12AM {tomorrow}__"""
             await pbot.send_photo(message.chat.id, 
-                                  photo="https://te.legra.ph/file/2590e47c86a4238cdfafc.jpg",
+                                  photo={SHIPPING_IMG},
                                   caption=couple_selection_message
                                  )
     except Exception as e:
