@@ -46,7 +46,7 @@ async def dhanime(_, cq):
     f = rs['data'][1]['filesize_mbs']
     g = rs['data'][1]['url']
     h = rs['data'][1]['filename']
-    TEXT1 = f"**ID:** {e}\n**NAME:** {h}\n**SIZE:** {f} MB\n**QUALITY: 720P**\n\n**CREDITS: @NovaXMod**"
+    TEXT1 = f"**ID:** {e}\n**NAME:** {h}\n**SIZE:** {f} MB\n**QUALITY: 720P**\n\n"
     await cq.message.edit(TEXT1, reply_markup=InlineKeyboardMarkup ([[InlineKeyboardButton ("DOWNLOAD LINK", url = f"{g}")],[InlineKeyboardButton ("❌", callback_data=f"hclose#{cq.message.from_user.id}")]]))
 
 #DELETE CALLBACK
