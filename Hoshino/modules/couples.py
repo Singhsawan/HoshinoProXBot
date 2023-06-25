@@ -6,6 +6,8 @@ from pyrogram.enums import ChatType
 
 from Hoshino import pbot
 from Hoshino.utils.mongo import get_couple, save_couple
+from Helper.helper import START_STIKERS,START_VIDEO,PHOTO
+
 
 
 # Date and time
@@ -69,7 +71,10 @@ __New couple of the day can be chosen at 12AM {tomorrow}__"""
 
 {c1_name} + {c2_name} = 😘
 __New couple of the day can be chosen at 12AM {tomorrow}__"""
-            await pbot.send_message(message.chat.id, text=couple_selection_message)
+            await pbot.send_photo(message.chat.id, 
+                                  photo=random.choice(PHOTO),
+                                  caption=couple_selection_message
+                                 )
     except Exception as e:
         print(e)
         await message.reply_text(e)
