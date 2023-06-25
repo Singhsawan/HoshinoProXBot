@@ -30,6 +30,8 @@ from telethon import __version__ as tlhver
 import Hoshino.modules.sql.users_sql as sql
 from Helper.helper import START_STIKERS,START_VIDEO,PHOTO
 
+START_VID = random.choice(START_VIDEO)
+
 from Hoshino import (
     BOT_NAME,
     BOT_USERNAME,
@@ -75,9 +77,10 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-*ʜᴇʏ* {}, 🥀
+*ʜᴇʏ* {}, 
 
 *๏ ᴛʜɪs ɪs* {}!
+[ㅤ]({START_VID})
 ➻ ᴛʜᴇ ᴍᴏsᴛ ᴩᴏᴡᴇʀғᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴩ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ᴡɪᴛʜ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ᴀɴᴅ ᴜsᴇғᴜʟ ғᴇᴀᴛᴜʀᴇs.
 
 ──────────────────
@@ -724,12 +727,12 @@ def main():
                 caption=f"""
 ㅤ🥀 {BOT_NAME} ɪs ᴀʟɪᴠᴇ ʙᴀʙʏ...
 
-┏•❅────✧❅✦❅✧────❅•┓
-ㅤ★ **ᴘʏᴛʜᴏɴ :** `{y()}`
-ㅤ★ **ʟɪʙʀᴀʀʏ :** `{telever}`
-ㅤ★ **ᴛᴇʟᴇᴛʜᴏɴ :** `{tlhver}`
-ㅤ★ **ᴩʏʀᴏɢʀᴀᴍ :** `{pyrover}`
-┗•❅────✧❅✦❅✧────❅•┛""",
+┏•────────────────────────•┓
+ㅤ》 **ᴘʏᴛʜᴏɴ :** `{y()}`
+ㅤ》 **ʟɪʙʀᴀʀʏ :** `{telever}`
+ㅤ》 **ᴛᴇʟᴇᴛʜᴏɴ :** `{tlhver}`
+ㅤ》 **ᴩʏʀᴏɢʀᴀᴍ :** `{pyrover}`
+┗•────────────────────────•┛""",
                 parse_mode=ParseMode.MARKDOWN,
             )
         except Unauthorized:
