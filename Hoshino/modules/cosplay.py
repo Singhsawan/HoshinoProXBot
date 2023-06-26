@@ -2,19 +2,23 @@ import requests
 from pyrogram import filters
 from pyrogram.types import Message,InlineKeyboardButton,InlineKeyboardMarkup
 from pyrogram.enums import *
+from telegram.ext import CallbackContext, run_async
 
 from Hoshino import pbot
+from Hoshino import dispatcher
+from Hoshino.modules.disable import DisableAbleCommandHandler
 
-
-@pbot.on_message(filters.command("cosplay"))
-async def cosplay(_,msg):
+# @pbot.on_message(filters.command("cosplay"))
+@run_async
+def cosplay(_,msg):
     img = requests.get("https://waifu-api.vercel.app").json()
-    await msg.reply_photo(img, caption=f"Cosplay By @{pbot.me.username}")
+    msg.reply_photo(img, caption=f"Cosplay By @{pbot.me.username}")
 
-@pbot.on_message(filters.command("ncosplay"))
-async def ncosplay(_,msg):
+# @pbot.on_message(filters.command("ncosplay"))
+@run_async
+def ncosplay(_,msg):
     if msg.chat.type != ChatType.PRIVATE:
-      await msg.reply_text("Sorry you can use this command only in private chat with bot",
+      msg.reply_text("Sorry you can use this command only in private chat with bot",
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton("Go PM",url=f"https://t.me/{pbot.me.username}?start=True")]
@@ -23,6 +27,18 @@ async def ncosplay(_,msg):
     else:
        ncosplay = requests.get("https://waifu-api.vercel.app/items/1").json()
 
-       await msg.reply_photo(ncosplay, caption=f"Cosplay By @{pbot.me.username}")
+       msg.reply_photo(ncosplay, caption=f"Cosplay By @{pbot.me.username}")
 
+
+COSPLAY_HANDLEER = DisableAbleCommandHandler("cosplay", cosplay)
+NCOSPLAY_HANDLEER = DisableAbleCommandHandler("ncosplay", cosplay)
+
+
+dispatcher.add_handler(COSPLAY_HANDLEER)
+dispatcher.add_handler(NCOSPLAY_HANDLEER)
+
+__handlers__ = [
+    COSPLAY_HANDLEER,
+    NCOSPLAY_HANDLEER,
+]
 
