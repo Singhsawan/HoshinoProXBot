@@ -39,7 +39,7 @@ def afk(update: Update, context: CallbackContext):
     sql.set_afk(update.effective_user.id, reason)
     fname = update.effective_user.first_name
     try:
-        update.effective_message.reply_text("{} is now away!{}".format(fname, notice))
+        update.effective_message.reply_video(video= "https://telegra.ph/file/e374ba92cd333abe12c8a.mp4",caption="{} is now away!{}".format(fname, notice))
     except BadRequest:
         pass
 
