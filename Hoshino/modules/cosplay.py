@@ -26,12 +26,3 @@ def ncosplay(_,msg):
        ncosplay = requests.get("https://waifu-api.vercel.app/items/1").json()
 
        msg.reply_photo(ncosplay, caption=f"Cosplay By @{pbot.me.username}")
-
-__mod_name__ = "Cosplay"
-
-__help__ = """
-*Commands* *:*  
-
-• `/cosplay`*:* ꜱᴇɴᴅ ʀᴀɴᴅᴏᴍ ᴄᴏꜱᴘʟᴀʏ ɪᴍᴀɢᴇ ᴜꜱɪɴɢ ᴀᴘɪ.
-• `/ncosplay`*:* ꜱᴇɴᴅ ʀᴀɴᴅᴏᴍ ɴᴄᴏꜱᴘʟᴀʏ ɪᴍᴀɢᴇ ᴜꜱɪɴɢ ᴀᴘɪ.
-"""
