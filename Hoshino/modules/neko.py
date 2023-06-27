@@ -1,6 +1,7 @@
 import nekos
 import requests
 from telegram.ext import run_async
+from pyrogram.types import Message,InlineKeyboardButton,InlineKeyboardMarkup
 
 from Hoshino import dispatcher
 from Hoshino import pbot
