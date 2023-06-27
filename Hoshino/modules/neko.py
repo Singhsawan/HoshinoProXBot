@@ -36,7 +36,7 @@ def waifu(update, context):
 def cosplay(update, context):
     msg = update.effective_message
     img = requests.get("https://waifu-api.vercel.app").json()
-    msg.reply_photo(img , caption=f"Cosplay By @{pbot.me.username}")
+    msg.reply_photo(img, caption=f"Cosplay By @{pbot.me.username}")
 
 @run_async
 def neko(update, context):

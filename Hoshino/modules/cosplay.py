@@ -7,11 +7,6 @@ from telegram.ext import run_async
 
 
 from Hoshino import pbot
-from Hoshino import dispatcher
-from Hoshino.modules.disable import DisableAbleCommandHandler
-
-
-
 
 @pbot.on_message(filters.command("ncosplay"))
 async def ncosplay(_,msg):
