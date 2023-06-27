@@ -39,22 +39,6 @@ def cosplay(update, context):
     msg.reply_photo(img , caption=f"Cosplay By @{pbot.me.username}")
 
 @run_async
-def ncosplay(update, context):
-    msg = update.effective_message
-    if msg.chat.type != ChatType.PRIVATE:
-      msg.reply_text("Sorry you can use this command only in private chat with bot",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [InlineKeyboardButton("Go PM",url=f"https://t.me/{pbot.me.username}?start=True")]
-            ]
-        ))
-    else:
-       ncosplay = requests.get("https://waifu-api.vercel.app/items/1").json()
-
-       msg.reply_photo(ncosplay, caption=f"Cosplay By @{pbot.me.username}")
-
-
-@run_async
 def neko(update, context):
     msg = update.effective_message
     url = f"{url_sfw}neko"

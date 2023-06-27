@@ -11,11 +11,6 @@ from Hoshino import dispatcher
 from Hoshino.modules.disable import DisableAbleCommandHandler
 
 
-# @pbot.on_message(filters.command("cosplay"))
-@run_async
-def cosplay(_,msg):
-    img = requests.get("https://waifu-api.vercel.app").json()
-    msg.reply_photo(img, caption=f"Cosplay By @{pbot.me.username}")
 
 # @pbot.on_message(filters.command("ncosplay"))
 @run_async
@@ -32,16 +27,11 @@ def ncosplay(_,msg):
 
        msg.reply_photo(ncosplay, caption=f"Cosplay By @{pbot.me.username}")
 
+__mod_name__ = "Cosplay"
 
-COSPLAY_HANDLEER = DisableAbleCommandHandler("cosplay", cosplay)
-NCOSPLAY_HANDLEER = DisableAbleCommandHandler("ncosplay", cosplay)
+__help__ = """
+*Commands* *:*  
 
-
-dispatcher.add_handler(COSPLAY_HANDLEER)
-dispatcher.add_handler(NCOSPLAY_HANDLEER)
-
-__handlers__ = [
-    COSPLAY_HANDLEER,
-    NCOSPLAY_HANDLEER,
-]
-
+• `/cosplay`*:* ꜱᴇɴᴅ ʀᴀɴᴅᴏᴍ ᴄᴏꜱᴘʟᴀʏ ɪᴍᴀɢᴇ ᴜꜱɪɴɢ ᴀᴘɪ.
+• `/ncosplay`*:* ꜱᴇɴᴅ ʀᴀɴᴅᴏᴍ ɴᴄᴏꜱᴘʟᴀʏ ɪᴍᴀɢᴇ ᴜꜱɪɴɢ ᴀᴘɪ.
+"""
