@@ -38,7 +38,7 @@ async def nwaifu(_,msg):
        url = f"{url_nsfw}waifu"
        result = requests.get(url).json()
        img = result["url"]
-       msg.reply_photo(photo=img)
+       await msg.reply_photo(photo=img)
 
 
 
@@ -56,4 +56,4 @@ async def nneko(_,msg):
        url = f"{url_nsfw}neko"
        result = requests.get(url).json()
        img = result["url"]
-       msg.reply_photo(photo=img)
+       await msg.reply_photo(photo=img)
