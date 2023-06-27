@@ -12,9 +12,9 @@ from Hoshino.modules.disable import DisableAbleCommandHandler
 
 
 
-# @pbot.on_message(filters.command("ncosplay"))
-@run_async
-def ncosplay(_,msg):
+
+@pbot.on_message(filters.command("ncosplay"))
+async def ncosplay(_,msg):
     if msg.chat.type != ChatType.PRIVATE:
       msg.reply_text("Sorry you can use this command only in private chat with bot",
         reply_markup=InlineKeyboardMarkup(
