@@ -3,6 +3,8 @@ import requests
 from telegram.ext import run_async
 
 from Hoshino import dispatcher
+from Hoshino import pbot
+
 from Hoshino.modules.disable import DisableAbleCommandHandler
 
 url_sfw = "https://api.waifu.pics/sfw/"
@@ -33,7 +35,22 @@ def waifu(update, context):
 def cosplay(update, context):
     msg = update.effective_message
     img = requests.get("https://waifu-api.vercel.app").json()
-    msg.reply_photo(img)
+    msg.reply_photo(img , caption=f"Cosplay By @{pbot.me.username}")
+
+@run_async
+def ncosplay(update, context):
+    msg = update.effective_message
+    if msg.chat.type != ChatType.PRIVATE:
+      msg.reply_text("Sorry you can use this command only in private chat with bot",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton("Go PM",url=f"https://t.me/{pbot.me.username}?start=True")]
+            ]
+        ))
+    else:
+       ncosplay = requests.get("https://waifu-api.vercel.app/items/1").json()
+
+       msg.reply_photo(ncosplay, caption=f"Cosplay By @{pbot.me.username}")
 
 
 @run_async
@@ -386,6 +403,7 @@ def woof(update, context):
 
 WALLPAPER_HANDLER = DisableAbleCommandHandler("wallpaper", wallpaper)
 COSPLAY_HANDLER = DisableAbleCommandHandler("cosplay", cosplay)
+NCOSPLAY_HANDLER = DisableAbleCommandHandler("ncosplay", ncosplay)
 TICKLE_HANDLER = DisableAbleCommandHandler("tickle", tickle)
 FEED_HANDLER = DisableAbleCommandHandler("feed", feed)
 GASM_HANDLER = DisableAbleCommandHandler("gasm", gasm)
@@ -435,6 +453,7 @@ CRINGE_HANDLER = DisableAbleCommandHandler("cringe", cringe)
 
 dispatcher.add_handler(SLAP_HANDLER)
 dispatcher.add_handler(COSPLAY_HANDLER)
+dispatcher.add_handler(NCOSPLAY_HANDLER)
 dispatcher.add_handler(KILLGIF_HANDLER)
 dispatcher.add_handler(HAPPY_HANDLER)
 dispatcher.add_handler(WINK_HANDLER)
@@ -484,6 +503,7 @@ dispatcher.add_handler(FOXGIRL_HANDLER)
 __handlers__ = [
     SLAP_HANDLER,
     COSPLAY_HANDLER,
+    NCOSPLAY_HANDLER,
     LIZARD_HANDLER,
     GOOSE_HANDLER,
     WOOF_HANDLER,
