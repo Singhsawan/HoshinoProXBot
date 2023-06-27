@@ -8,6 +8,8 @@ from telegram.ext import run_async
 
 from Hoshino import pbot
 
+url_nsfw = "https://api.waifu.pics/nsfw/"
+
 @pbot.on_message(filters.command("ncosplay"))
 async def ncosplay(_,msg):
     if msg.chat.type != ChatType.PRIVATE:
@@ -33,9 +35,11 @@ async def nwaifu(_,msg):
             ]
         ))
     else:
-       nwaifu = requests.get("https://api.waifu.pics/nsfw/waifu").json()
+       url = f"{url_nsfw}waifu"
+       result = requests.get(url).json()
+       img = result["url"]
+       msg.reply_photo(photo=img)
 
-       await msg.reply_photo({nwaifu.url}, caption=f"Cosplay By @{pbot.me.username}")
 
 
 
@@ -49,6 +53,7 @@ async def nneko(_,msg):
             ]
         ))
     else:
-       nneko = requests.get("https://api.waifu.pics/nsfw/neko").json()
-
-       await msg.reply_photo(nneko.url, caption=f"Cosplay By @{pbot.me.username}")
+       url = f"{url_nsfw}neko"
+       result = requests.get(url).json()
+       img = result["url"]
+       msg.reply_photo(photo=img)
