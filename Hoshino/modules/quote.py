@@ -6,28 +6,33 @@ from pyrogram import filters
 
 from Hoshino import pbot
 
+from Hoshino.modules.disable import DisableAbleCommandHandler
+from Hoshino import dispatcher
+
 url = "https://animechan.xyz/api/random"
 
-@pbot.on_message(filters.command("cosplay"))
-async def quote(update, context):
+
+@run_async
+def quote(update, context):
     msg = update.effective_message
-    result = requests.get(url).json()
-    await msg.reply_message(result)
-
-# QUOTE_HANDLER = DisableAbleCommandHandler("quote", quote)
+    quot = requests.get("https://waifu-api.vercel.app").json()
+    msg.reply_text(f"Anime: {quot.anime}\nCharacter: {quot.character}\nQuote: {quot.quote}")
 
 
-# dispatcher.add_handler(QUOTE_HANDLER)
 
-# __handlers__ = [
-#     QUOTE_HANDLER
-# ]
 
-# __mod_name__ = "Quote"
+QUOTE_HANDLER = DisableAbleCommandHandler("quote", quote)
+dispatcher.add_handler(QUOTE_HANDLER)
 
-# __help__ = """
-# *Commands* *:*  
+__handlers__ = [
+    QUOTE_HANDLER
+]
 
-# • `/quote`*:* Get random anime quote.
-# """
+__mod_name__ = "Quote"
+
+__help__ = """
+*Commands* *:*  
+
+• `/quote`*:* Get random anime quote.
+"""
 
