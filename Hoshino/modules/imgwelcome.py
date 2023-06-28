@@ -4,12 +4,15 @@ from telegraph import upload_file
 from pyrogram import *
 from pyrogram.types import *
 from pyrogram.enums import *
+from pyrogram.types import Message,InlineKeyboardButton,InlineKeyboardMarkup
+from pyrogram import filters
 
 #NAME => YOUR BOTS FILE NAME
 from Hoshino import pbot
+from Hoshino import SUPPORT_CHAT
 
 #ADD ANY BUTTON YOU WANT BELOW YOUR WELCOME IMAGE
-markup=InlineKeyboardMarkup ([[InlineKeyboardButton ("MODS", url="https://t.me/NovaXMod")]])
+markup=InlineKeyboardMarkup ([[InlineKeyboardButton ("Join Suport", url="https://t.me/{SUPPORT_CHAT}")]])
 
 @pbot.on_message(filters.new_chat_members & filters.group)
 async def welcomepic(_, message):

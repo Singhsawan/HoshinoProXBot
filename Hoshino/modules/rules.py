@@ -89,7 +89,6 @@ def send_rules(update, chat_id, from_pm=False, dest_chat=None):
             "This probably doesn't mean it's lawless though...!",
         )
 
-
 @connection_status
 @user_admin
 def set_rules(update: Update, context: CallbackContext):
