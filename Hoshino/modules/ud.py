@@ -1,32 +1,43 @@
 import requests
-from telegram import ParseMode, Update
-from telegram.ext import CallbackContext
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 from Hoshino import dispatcher
 from Hoshino.modules.disable import DisableAbleCommandHandler
 
 
-def ud(update: Update, context: CallbackContext):
-    message = update.effective_message
-    text = message.text[len("/ud ") :]
+def ud(update, context):
+    try:
+        text = " ".join(context.args)
+    except IndexError:
+        return context.bot.send_message(
+            chat_id=update.effective_chat.id,
+            text="ᴘʟᴇᴀsᴇ ᴇɴᴛᴇʀ ᴋᴇʏᴡᴏʀᴅs ᴛᴏ sᴇᴀʀᴄʜ ᴏɴ ᴜᴅ!",
+        )
     results = requests.get(
         f"https://api.urbandictionary.com/v0/define?term={text}"
     ).json()
     try:
-        reply_text = f'*{text}*\n\n{results["list"][0]["definition"]}\n\n_{results["list"][0]["example"]}_'
+        reply_txt = f'𝗪𝗢𝗥𝗗 : {text}\n\n𝗗𝗘𝗙𝗜𝗡𝗔𝗧𝗜𝗢𝗡 : \n{results["list"][0]["definition"]}\n\n𝗘𝗫𝗔𝗠𝗣𝗟𝗘 : \n{results["list"][0]["example"]}'
     except:
-        reply_text = "No results found."
-    message.reply_text(reply_text, parse_mode=ParseMode.MARKDOWN)
+        reply_txt = (
+            f"Word: {text}\n\nʀᴇsᴜʟᴛs: sᴏʀʀʏ, ᴄᴏᴜʟᴅ ɴᴏᴛ ғɪɴᴅ ᴀɴʏ ᴍᴀᴛᴄʜɪɴɢ ʀᴇsᴜʟᴛs!"
+        )
+    keyboard = [
+        [
+            InlineKeyboardButton(
+                text="🔎 ꜱᴇᴀʀᴄʜ", url=f"https://www.google.com/search?q={text}"
+            )
+        ]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text=reply_txt,
+        reply_markup=reply_markup,
+        parse_mode="HTML",
+    )
 
 
-UD_HANDLER = DisableAbleCommandHandler(["ud"], ud, run_async=True)
+ud_handler = DisableAbleCommandHandler("ud", ud)
 
-dispatcher.add_handler(UD_HANDLER)
-
-__help__ = """
-» /ud (text) *:* Searchs the given text on Urban Dictionary and sends you the information.
-"""
-__mod_name__ = "Uʀʙᴀɴ D"
-
-__command_list__ = ["ud"]
-__handlers__ = [UD_HANDLER]
+dispatcher.add_handler(ud_handler)
