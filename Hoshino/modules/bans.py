@@ -15,6 +15,7 @@ from Hoshino import (
     WOLVES,
     dispatcher,
 )
+
 from Hoshino.modules.disable import DisableAbleCommandHandler
 from Hoshino.modules.helper_funcs.chat_status import (
     bot_admin,
@@ -27,10 +28,10 @@ from Hoshino.modules.helper_funcs.chat_status import (
     user_admin,
     user_can_ban,
 )
+
 from Hoshino.modules.helper_funcs.extraction import extract_user_and_text
 from Hoshino.modules.helper_funcs.string_handling import extract_time
 from Hoshino.modules.log_channel import gloggable, loggable
-
 
 @connection_status
 @bot_admin

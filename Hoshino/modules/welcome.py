@@ -203,6 +203,21 @@ def new_member(update: Update, context: CallbackContext):
                 )
                 continue
 
+            # Special Kira Welcome
+            elif new_mem.id == 5443243540:
+                update.effective_message.reply_video(
+                    caption="Everybody look, My Developer @SIAmKira is here.\nHello Master, How are you Doing Today?",
+                    video="https://te.legra.ph/file/e49af833b33f0464f8207.mp4",
+                    reply_to_message_id=reply,
+                )
+                welcome_log = (
+                    f"{html.escape(chat.title)}\n"
+                    f"#USER_JOINED\n"
+                    f"God of new world just joined the group"
+                )
+                continue
+
+
             # Welcome Sudos
             elif new_mem.id in DRAGONS:
                 update.effective_message.reply_text(
