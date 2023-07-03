@@ -1,1 +1,1 @@
-worker: python3 -m Hoshino
+web: python3 -m Hoshino
